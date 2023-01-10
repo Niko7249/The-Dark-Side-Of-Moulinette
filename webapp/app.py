@@ -5,12 +5,12 @@ import hashlib
 import datetime
 from werkzeug.utils import secure_filename
 import subprocess
-#from Moulinette import run_tests
+import sys
+import json
 
 app = Flask(__name__, template_folder = './templates')
 app.config['UPLOAD_FOLDER'] = "./uploads"
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024 #5MB size_limit files
-
 
 @app.route("/", methods =["GET","POST"])
 def home():
@@ -31,6 +31,7 @@ def home():
         m.update(new_filename.encode("utf-8") + str(datetime.datetime.now()).encode("utf-8"))
         new_filename = m.hexdigest()
         new_filepath = os.path.join(app.config['UPLOAD_FOLDER'], new_filename)
+#        app.new_filepath = new_filepath
         #save file HERE
         f.save(new_filepath + ".zip")
         #-----------------
@@ -51,13 +52,19 @@ def home():
         #----------------------
         #check for errors in shell operations
         if mv.returncode == 0 and make.returncode == 0 and gcc.returncode == 0:
-            data = {"OK": "all went good"}
+            data = {"OK": "its all good bruh"}
+            data = {"filename": new_filepath}
         else:
             data = {"ERROR": "someting got fu***d"}
-        return render_template('index.html', data=data)
+            return render_template('index.html', data=data)
 
-    
     #change working directory to "/script_test"
+    sys.path.append('./script_test/.')
+    from Moulinette import run_tests
+    data ={"OK": run_tests(new_filepath)}
     
+   # json output
+
+    return render_template('index.html', data=data)
 if __name__== "__main__":
     app.run(host='0.0.0.0')

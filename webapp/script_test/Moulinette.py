@@ -1,29 +1,67 @@
+from pytest_jsonreport.plugin import JSONReport
 import pytest
+#from pytest_jsonreport.plugin import JSONReport
+import os
+import sys
+import ctypes
+import ctypes.util
+
+#import JSONReport
+
+#file_path = app.new_filepath
+#print(file_path)
 
 # cwd = os.getcwd()
 
 # Construct the full path to the library file
- library_path = os.path.join(cwd, 'libft.so')
+
+"""
+library_path = os.path.join(str(app.new_filepath) + 'libft.so')
+libft = ctypes.cdll.LoadLibrary('library_path')
+libft_tester = ctypes.cdll.LoadLibrary('./lib/libft_tester.so')
+libc = ctypes.cdll.LoadLibrary('./lib/libc.so.6')
+libbsd = ctypes.cdll.LoadLibrary('./lib/libbsd.so.0.11.5')
+"""
+
+LIBRARY_PATH = None
+libft = None
+libft_tester = None
+libc = None
+libbsd = None
+
+def run_tests(new_filepath):
+  global LIBRARY_PATH, libft,  libft_tester, libc, libbsd
+
+  LIBRARY_PATH = os.path.join(str(new_filepath) + '/libft.so')
+  libft = ctypes.cdll.LoadLibrary(LIBRARY_PATH)
+  libft_tester = ctypes.cdll.LoadLibrary('./script_test/lib/libft_tester.so')
+  libc = ctypes.cdll.LoadLibrary('libc.so.6')
+  libbsd = ctypes.cdll.LoadLibrary('./script_test/lib/libbsd.so.0.11.5')
 
 
- libft = ctypes.cdll.LoadLibrary('library_path')
- libc = ctypes.cdll.LoadLibrary('.lib/libc.so.6')
-
-
-def run_tests():
-
+  """
   tests = [
-    ('FT_ISALPHA', './test/test_ft_isalpha.py'),
-    ('FT_ISDIGIT', './test/test_ft_isdigit.py'),
-    ('FT_ISALNUM', './test/test_ft_isalnum.py'),
-    ('FT_ISASCII', './test/test_ft_isascii.py'),
-    ('FT_ISPRINT', './test/test_ft_isprint.py'),
-    ('FT_TOLOWER', './test/test_ft_tolower.py') 
+    ('FT_ISALNUM', './script_test/test/test_ft_isalnum.py'),
+    ('FT_ISALPHA', './script_test/test/test_ft_isalpha.py'),
+    ('FT_ISDIGIT', './script_test/test/test_ft_isdigit.py'),
+    ('FT_ISASCII', './script_test/test/test_ft_isascii.py'),
+    ('FT_ISPRINT', './script_test/test/test_ft_isprint.py'),
+    ('FT_TOLOWER', './script_test/test/test_ft_tolower.py') 
   ]
+  """
+  
+  tests = [('FT_ISALNUM', './script_test/test/test_ft_isalnum.py')]
   
   for test in tests:
     print(test[0])
-    pytest.main(['-v', '--tb=short', '--no-header', test[1]])
+    plugin = JSONReport()
+    pytest.main(['-v', '--tb=short', '--no-header', '--json-report-file=none', test[1]], plugins=[plugin])
+    plugin.save_report(new_filepath + '/tmp/' + test[0])
+
+
+#    plugin = JSONReport()
+#    plugin.save_report(LIBRARY_PATH)
+
 
   # print('FT_ISALPHA')
   # pytest.main(['-v', '--tb=short', '--no-header', './test/test_ft_isalpha.py'])

@@ -97,4 +97,10 @@
     </div>
   </body>
 </html>
+<script>
+  {% if data and data["filename"] %}
+  sessionStorage.setItem("filename",`{{ data["filename"]}}`)
+  // inviare il contenuto del file json (output)
+  {% endif %}
+</script>
 	
