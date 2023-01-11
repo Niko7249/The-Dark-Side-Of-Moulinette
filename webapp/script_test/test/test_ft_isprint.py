@@ -1,168 +1,35 @@
 import ctypes
+import pytest
 import os
-import sys
-sys.path.append('./../.')
-import Moulinette
 
 # Get the current working directory
 cwd = os.getcwd()
 
-libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
+# Construct the full path to the library file
+library_path = os.path.join(cwd, 'libft.so')
+
+libft = ctypes.cdll.LoadLibrary(library_path)
 libc = ctypes.cdll.LoadLibrary('libc.so.6')
 
-def test1_ft_isprint():
+test_strings = [32, 127, 33, 10, 6, 0]
 
-    # input function
-    test_string = 32
+ids = ["input char: {}".format(t) for t in test_strings]
+@pytest.mark.parametrize("test_string",test_strings, ids=ids)
 
-    # Definizione della funzione ft_isprint nella libreria
-    ft_isprint = libft.ft_isprint
+def test_ft_isascii(test_string):
+    # Define the function ft_isascii in the library
+    ft_isascii = libft.ft_isascii
+    ft_isascii.restype = ctypes.c_int
+    ft_isascii.argtypes = [ctypes.c_int]
 
-    # Specify the return type (int in this case)
-    ft_isprint.restype = ctypes.c_int
+    # Define the isascii function in the library
+    isascii = libc.isascii
+    isascii.restype = ctypes.c_int
+    isascii.argtypes = [ctypes.c_int]
 
-    # Specify the argument types (int in this case)
-    ft_isprint.argtypes = [ctypes.c_int]
+    # Run the test
+    result = ft_isascii(test_string)
+    original_result = isascii(test_string)
 
-    # Define the isprint function in the library
-    isprint = libc.isprint
-
-     # Specify the return type (int in this case)
-    isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    isprint.argtypes = [ctypes.c_int]
-
-    result = ft_isprint(test_string)
-    
-    # chiamare la funzione originale con i dati di input
-    original_result = isprint(test_string)
-
-    # verificare che il risultato ottenuto sia uguale al risultato della funzione originale
+    # Check that the results are equal
     assert result == original_result
-
-def test2_ft_isprint():
-
-    # input function
-    test_string = 127
-
-    # Definizione della funzione ft_isprint nella libreria
-    ft_isprint = libft.ft_isprint
-
-    # Specify the return type (int in this case)
-    ft_isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    ft_isprint.argtypes = [ctypes.c_int]
-
-    # Define the isprint function in the library
-    isprint = libc.isprint
-
-     # Specify the return type (int in this case)
-    isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    isprint.argtypes = [ctypes.c_int]
-
-    result = ft_isprint(test_string)
-    
-    # chiamare la funzione originale con i dati di input
-    original_result = isprint(test_string)
-
-    # verificare che il risultato ottenuto sia uguale al risultato della funzione originale
-    assert result == original_result
-
-def test3_ft_isprint():
-
-    # input function
-    test_string = 33
-
-    # Definizione della funzione ft_isprint nella libreria
-    ft_isprint = libft.ft_isprint
-
-    # Specify the return type (int in this case)
-    ft_isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    ft_isprint.argtypes = [ctypes.c_int]
-
-    # Define the isprint function in the library
-    isprint = libc.isprint
-
-     # Specify the return type (int in this case)
-    isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    isprint.argtypes = [ctypes.c_int]
-
-    result = ft_isprint(test_string)
-    
-    # chiamare la funzione originale con i dati di input
-    original_result = isprint(test_string)
-
-    # verificare che il risultato ottenuto sia uguale al risultato della funzione originale
-    assert result == original_result
-
-def test4_ft_isprint():
-
-    # input function
-    test_string = 10
-
-    # Definizione della funzione ft_isprint nella libreria
-    ft_isprint = libft.ft_isprint
-
-    # Specify the return type (int in this case)
-    ft_isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    ft_isprint.argtypes = [ctypes.c_int]
-
-    # Define the isprint function in the library
-    isprint = libc.isprint
-
-     # Specify the return type (int in this case)
-    isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    isprint.argtypes = [ctypes.c_int]
-
-    result = ft_isprint(test_string)
-    
-    # chiamare la funzione originale con i dati di input
-    original_result = isprint(test_string)
-
-    # verificare che il risultato ottenuto sia uguale al risultato della funzione originale
-    assert result == original_result
-
-def test5_ft_isprint():
-
-    # input function
-    test_string = 6
-
-    # Definizione della funzione ft_isprint nella libreria
-    ft_isprint = libft.ft_isprint
-
-    # Specify the return type (int in this case)
-    ft_isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    ft_isprint.argtypes = [ctypes.c_int]
-
-    # Define the isprint function in the library
-    isprint = libc.isprint
-
-     # Specify the return type (int in this case)
-    isprint.restype = ctypes.c_int
-
-    # Specify the argument types (int in this case)
-    isprint.argtypes = [ctypes.c_int]
-
-    result = ft_isprint(test_string)
-    
-    # chiamare la funzione originale con i dati di input
-    original_result = isprint(test_string)
-
-    # verificare che il risultato ottenuto sia uguale al risultato della funzione originale
-    assert result == original_result
-
-

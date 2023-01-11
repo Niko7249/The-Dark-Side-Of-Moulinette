@@ -1,29 +1,4 @@
-# # Makefile
-
-# cc = gcc
-
-# flags = -Wall -Wextra -Werror -o
-
-# rm = rm -f
-
-# name_exe = libft.a
-
-# source_files = ft_atoi.c ft_isalnum.c ft_isdigit.c ft_strchr.c ft_strlcpy.c ft_strnstr.c ft_toupper.c ft_bzero.c ft_isalpha.c ft_isprint.c ft_strdup.c ft_strlen.c ft_strrchr.c ft_calloc.c ft_isascii.c ft_memset.c ft_strlcat.c ft_strncmp.c ft_tolower.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c
-
-# object_files = $(source_files:%.c=.o)
-
-# all: $(name_exe)
-# 	$(cc) $(source_files) $(flags) $(name_exe)
-
-# clean:
-# 	$(rm) $(object_file) #delete all object files
-
-# fclean: clean
-# 	$(rm) $(name_exe) #calls for clean and remove even the exe.
-
-# re: fclean all
-
-# .PHONY: all clean fclean re #Needs for calling the options trough the terminal
+# Makefile
 
 NAME = libft.a
 
@@ -33,12 +8,7 @@ AR = ar rcs
 RM = rm -f
 
 
-SRCS		= 	ft_isalnum.c \
-			ft_isdigit.c \
-			ft_isalpha.c \
-			ft_isprint.c \
-			ft_isascii.c \
-			ft_tolower.c \
+SRCS		= 	*.c \
 
 
 OBJS		= ${SRCS:.c=.o}

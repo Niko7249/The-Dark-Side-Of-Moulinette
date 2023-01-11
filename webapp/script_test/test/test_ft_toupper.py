@@ -11,25 +11,25 @@ library_path = os.path.join(cwd, 'libft.so')
 libft = ctypes.cdll.LoadLibrary(library_path)
 libc = ctypes.cdll.LoadLibrary('libc.so.6')
 
-test_strings = [90, 68, 48, 32, 102]
+test_strings = [110, 90, 99, 67, 127]
 
 ids = ["input char: {}".format(t) for t in test_strings]
 @pytest.mark.parametrize("test_string",test_strings, ids=ids)
 
-def test_ft_tolower(test_string):
-    # Define the function ft_tolower in the library
-    ft_tolower = libft.ft_tolower
-    ft_tolower.restype = ctypes.c_int
-    ft_tolower.argtypes = [ctypes.c_int]
+def test_ft_toupper(test_string):
+    # Define the function ft_toupper in the library
+    ft_toupper = libft.ft_toupper
+    ft_toupper.restype = ctypes.c_int
+    ft_toupper.argtypes = [ctypes.c_int]
 
-    # Define the tolower function in the library
-    tolower = libc.tolower
-    tolower.restype = ctypes.c_int
-    tolower.argtypes = [ctypes.c_int]
+    # Define the toupper function in the library
+    toupper = libc.toupper
+    toupper.restype = ctypes.c_int
+    toupper.argtypes = [ctypes.c_int]
 
     # Run the test
-    result = ft_tolower(test_string)
-    original_result = tolower(test_string)
+    result = ft_toupper(test_string)
+    original_result = toupper(test_string)
 
     # Check that the results are equal
     assert result == original_result

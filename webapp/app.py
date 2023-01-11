@@ -62,6 +62,9 @@ def home():
     sys.path.append('./script_test/.')
     from Moulinette import run_tests
     data ={"OK": run_tests(new_filepath)}
+
+    #nome variabile json_out
+    # parsare tutti i file json e inviare sul frontend
     
    # json output
 
