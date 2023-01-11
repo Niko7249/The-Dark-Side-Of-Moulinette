@@ -80,6 +80,13 @@ body {
 	filter: drop-shadow(0 0 5px rgb(173, 0, 0)) drop-shadow(0 0 20px rgb(173, 0, 0)) contrast(2) brightness(2);
 }
 
+.comingsoon-span {
+	text-align: center;
+	font-size: 800%;
+	padding-top: 100px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .slow-flickering {
 	animation: flicker 5s linear infinite;
 }
