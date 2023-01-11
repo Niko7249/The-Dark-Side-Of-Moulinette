@@ -1,0 +1,206 @@
+@font-face {
+	font-family: starWars;
+	src: url(../assets/fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf);
+}
+
+:root {
+	--green: #26b621;
+	--white: rgb(255, 247, 0);
+	--red: rgb(231, 0, 0);
+}
+
+body {
+	color: var(--white);
+	font-family: monospace;
+	font-size: 15px;
+	background-color: #222;
+}
+
+.page-content {
+	position: relative;
+	z-index: 2;
+}
+
+.title {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.title span {
+	padding: 0 10px;
+}
+
+.title .hr-container {
+	width: 100%;
+}
+
+.title hr {
+	border-color: transparent;
+	border-top: 2px dashed var(--white);
+	border-left: 0px dashed var(--white);
+	margin: 1.5px 0 -1px 0;
+}
+
+.title.green hr {
+	border-top: 2px dashed var(--green);
+	border-left: 0px dashed var(--green);
+}
+
+.title.red hr {
+	border-top: 2px dashed var(--red);
+	border-left: 0px dashed var(--red);
+}
+
+.green {
+	color: var(--green);
+}
+
+.red {
+	color: var(--red);
+}
+
+.test {
+	margin: 20px 0;
+}
+
+.test div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.page-title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: rgb(173, 0, 0);
+	font-family: 'starWars';
+	font-size: 90px;
+	font-weight: 500;
+	filter: drop-shadow(0 0 5px rgb(173, 0, 0)) drop-shadow(0 0 20px rgb(173, 0, 0)) contrast(2) brightness(2);
+}
+
+.slow-flickering {
+	animation: flicker 5s linear infinite;
+}
+
+.fast-flickering {
+	animation: flicker 2s linear infinite;
+}
+
+@keyframes flicker {
+
+	0%,
+	19.999%,
+	22%,
+	62.999%,
+	64%,
+	64.999%,
+	70%,
+	100% {
+		opacity: .99;
+
+	}
+
+	20%,
+	21.999%,
+	63%,
+	63.999%,
+	65%,
+	69.999% {
+		opacity: 0.4;
+	}
+}
+
+.background {
+	position: fixed;
+	width: 200vw;
+	height: 400vw;
+	top: -50%;
+	left: -50%;
+	z-index: 1;
+	will-change: transform;
+	animation: spin 150s linear infinite;
+	background-size: 20%;
+	background-position: center center;
+	background-repeat: repeat;
+	background-attachment: scroll;
+}
+
+@-moz-keyframes spin {
+	0% {
+		-moz-transform: scale(1);
+	}
+
+	50% {
+		-moz-transform: scale(1.2);
+	}
+
+	100% {
+		-moz-transform: scale(1);
+	}
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: scale(1);
+	}
+
+	50% {
+		-webkit-transform: scale(1.2);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.stars {
+	background-image: url("../assets/space.jpg");
+}
+
+.terminal {
+	margin: 0 auto;
+	width: 80%;
+	background-color: black;
+	padding: 10px;
+	/* border: 2px solid rgb(51, 6, 232); */
+	/* box-shadow: 0 0 40px 8px rgba(255, 247, 2, 0.625); */
+	border: 2px solid #3e41db;
+	border-radius: 15px;
+	filter: drop-shadow(0 0 5px #3e41db) drop-shadow(0 0 20px #3e41db) contrast(2) brightness(2);
+}
+
+.destroyer {
+	position: absolute;
+	height: 100px;
+	top: 156px;
+	left: 100px;
+	transform: scale(2);
+	/* left: -360px; */
+	animation: moving 60s linear infinite;
+}
+
+@keyframes moving {
+	0% {
+		left: -560px
+	}
+
+	100% {
+		left: 101%
+	}
+}
