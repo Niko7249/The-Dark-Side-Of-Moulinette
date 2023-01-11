@@ -3,8 +3,9 @@ import os
 import sys
 sys.path.append('./../.')
 import Moulinette
+
 # Get the current working directory
-cwd = os.getcwd()
+#cwd = os.getcwd()
 
 # Construct the full path to the library file
 

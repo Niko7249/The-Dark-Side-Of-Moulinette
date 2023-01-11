@@ -1,14 +1,13 @@
 import ctypes
-
 import os
+import sys
+sys.path.append('./../.')
+import Moulinette
 
 # Get the current working directory
 cwd = os.getcwd()
 
-# Construct the full path to the library file
-library_path = os.path.join(cwd, 'libft.so')
-
-libft = ctypes.cdll.LoadLibrary(library_path)
+libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
 libc = ctypes.cdll.LoadLibrary('libc.so.6')
 
 def test1_ft_isalpha():
