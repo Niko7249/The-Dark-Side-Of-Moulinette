@@ -19,13 +19,13 @@ body {
 }
 
 .soldier:nth-child(2) {
-  -webkit-animation: go 30s 1s linear infinite;
-  animation: go 30s 1s linear infinite;
+  -webkit-animation: go 30s 10s linear infinite;
+  animation: go 30s 10s linear infinite;
 }
 
 .soldier:nth-child(3) {
-  -webkit-animation: go 30s 2s linear infinite;
-  animation: go 30s 2s linear infinite;
+  -webkit-animation: go 30s 15s linear infinite;
+  animation: go 30s 15s linear infinite;
 }
 
 .soldier:nth-child(4) {

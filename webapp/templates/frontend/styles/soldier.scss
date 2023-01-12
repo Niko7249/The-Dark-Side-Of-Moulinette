@@ -41,11 +41,11 @@ body{
 }
 
 .soldier:nth-child(2){
-   @include animation(go 30s 1s linear infinite);
+   @include animation(go 30s 10s linear infinite);
 }
 
 .soldier:nth-child(3){
-   @include animation(go 30s 2s linear infinite);
+   @include animation(go 30s 15s linear infinite);
 }
 
 .soldier:nth-child(4){
