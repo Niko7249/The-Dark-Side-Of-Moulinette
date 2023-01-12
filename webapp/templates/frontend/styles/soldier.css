@@ -14,23 +14,23 @@ body {
 }
 
 .soldier:nth-child(1) {
-  -webkit-animation: go 40s linear infinite;
-  animation: go 40s linear infinite;
+  -webkit-animation: go 30s linear infinite;
+  animation: go 30s linear infinite;
 }
 
 .soldier:nth-child(2) {
-  -webkit-animation: go 40s 1s linear infinite;
-  animation: go 40s 1s linear infinite;
+  -webkit-animation: go 30s 1s linear infinite;
+  animation: go 30s 1s linear infinite;
 }
 
 .soldier:nth-child(3) {
-  -webkit-animation: go 40s 2s linear infinite;
-  animation: go 40s 2s linear infinite;
+  -webkit-animation: go 30s 2s linear infinite;
+  animation: go 30s 2s linear infinite;
 }
 
 .soldier:nth-child(4) {
-  -webkit-animation: go 40s 3s linear infinite;
-  animation: go 40s 3s linear infinite;
+  -webkit-animation: go 30s 3s linear infinite;
+  animation: go 30s 3s linear infinite;
 }
 
 @media (max-width: 480px) {
@@ -82,18 +82,18 @@ body {
 }
 @-webkit-keyframes go {
   0% {
-    right: -10vw;
+    right: -10%;
   }
   100% {
-    right: 110vw;
+    right: 110%;
   }
 }
 @keyframes go {
   0% {
-    right: -10vw;
+    right: -10%;
   }
   100% {
-    right: 110vw;
+    right: 110%;
   }
 }
 @-webkit-keyframes bg {

@@ -37,19 +37,19 @@ body{
 
 
 .soldier:nth-child(1){
-   @include animation(go 40s linear infinite);
+   @include animation(go 30s linear infinite);
 }
 
 .soldier:nth-child(2){
-   @include animation(go 40s 1s linear infinite);
+   @include animation(go 30s 1s linear infinite);
 }
 
 .soldier:nth-child(3){
-   @include animation(go 40s 2s linear infinite);
+   @include animation(go 30s 2s linear infinite);
 }
 
 .soldier:nth-child(4){
-   @include animation(go 40s 3s linear infinite);
+   @include animation(go 30s 3s linear infinite);
 }
 
 @media(max-width:480px){
@@ -789,10 +789,10 @@ body{
 
 @include keyframes(go){
    0%{
-      right:-10vw;
+      right: -10%;
    }
    100%{
-      right:110vw;
+      right: 110%;
    }
 }
 

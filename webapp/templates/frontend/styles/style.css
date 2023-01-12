@@ -201,7 +201,14 @@ body {
 	border-radius: 7px;
 	filter: drop-shadow(0 0 5px var(--blue)) drop-shadow(0 0 20px var(--blue)) contrast(2) brightness(2);
 }
-
+.soldier-container {
+	margin: 0 2px;
+    bottom: 1px;
+    height: 80px;
+    position: absolute;
+    width: calc(100% - 4px);
+    overflow-x: hidden;
+}
 .text-description {
 	text-align: center;
 	font-family: 'droid';
