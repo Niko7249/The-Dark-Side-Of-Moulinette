@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import zipfile
 import hashlib
 import datetime
@@ -7,6 +7,8 @@ from werkzeug.utils import secure_filename
 import subprocess
 import sys
 import json
+
+ALL_FILES = []
 
 app = Flask(__name__, template_folder = './templates')
 app.config['UPLOAD_FOLDER'] = "./uploads"
@@ -89,12 +91,25 @@ def home():
         data={"error": "zip is broken, or you are trying to broke me 89"}
         return render_template('index.html', data=data)
 
+    json_path = new_filepath + "/tmp/"
+    for filename in os.listdir(json_path):
+        if filename.endswith('.json'):
+            with open(os.path.join(json_path, filename)) as f:
+                data = json.load(f)
+                ALL_FILES.append(data)
+
     #nome variabile json_out
     # parsare tutti i file json e inviare sul frontend
     
    # json output
 
     return render_template('index.html', data=data)
+
+@app.route('/api/result')
+def get_result():
+    # if (!ALL_FILES):
+    #     return ("NOT YET BRUH")
+    return jsonify(ALL_FILES)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))

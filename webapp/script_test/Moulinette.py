@@ -22,7 +22,9 @@ def run_tests(new_filepath):
   LIBFT = ctypes.cdll.LoadLibrary(LIBRARY_PATH)
   LIBFT_TESTER = ctypes.cdll.LoadLibrary('./script_test/lib/libft_tester.so')
   LIBC = ctypes.cdll.LoadLibrary('libc.so.6')
-  LIBBSD = ctypes.cdll.LoadLibrary('/../usr/lib/libbsd.so.0')
+  LIBBSD = ctypes.cdll.LoadLibrary('libbsd.so.0')
+#  LIBBSD = ctypes.cdll.LoadLibrary('./script_test/lib/libbsd.so.0.11.5')
+#  LIBBSD = ctypes.cdll.LoadLibrary('/../usr/lib/libbsd.so.0')
 
   path = './script_test/test/'
   tests = [
