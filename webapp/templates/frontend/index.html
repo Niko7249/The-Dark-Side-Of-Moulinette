@@ -96,8 +96,8 @@
 					<button type="submit">Submit</button>
 				</form>
 			</div>
-			<img src="./assets/deathStar.png" class="death-star">
-			<div style="position: relative;">
+			<!-- <img src="./assets/deathStar.png" class="death-star"> -->
+			<div class="sld-trm-container d-none">
 				<div class="terminal" id="prova"></div>
 				<div class="soldier-container">
 					<div class="soldier"></div>
@@ -109,6 +109,11 @@
 
 </body>
 </html>
-<script src="./js/FT_ISALNUM_all_errors.js"></script>
+<!-- <script src="./js/message.js"></script> -->
 <script src="./js/index.js"></script>
 <script src="./js/typeWriter.js"></script>
+<script>
+	{% if data and data["RESULT"] %}
+		getJson(data["RESULT"]);
+	{% endif %}
+</script>
