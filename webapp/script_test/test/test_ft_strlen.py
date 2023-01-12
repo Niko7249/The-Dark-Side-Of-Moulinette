@@ -1,15 +1,12 @@
 import ctypes
-import pytest
 import os
+import sys
+import pytest
+sys.path.append('./../.')
+import Moulinette
 
-# Get the current working directory
-cwd = os.getcwd()
-
-# Construct the full path to the library file
-library_path = os.path.join(cwd, 'libft.so')
-
-libft = ctypes.cdll.LoadLibrary(library_path)
-libc = ctypes.cdll.LoadLibrary('libc.so.6')
+libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
+libc = Moulinette.LIBC
 
 test_strings = ["ciao mondo", "", "    +-18329jchdbckjdhb", "ciao mondo               ", "ciao    \n mondo", "    -+18329234987298472904802498", "    + 18329234987298472904802498", "c"]
 ids = ["input: '{}'".format(t) for t in test_strings]

@@ -1,13 +1,11 @@
 import ctypes
-import pytest
 import os
+import sys
+import pytest
+sys.path.append('./../.')
+import Moulinette
 
-# Get the current working directory
-cwd = os.getcwd()
-
-# Construct the full path to the library file
-library_path = os.path.join(cwd, 'libft.so')
-libft = ctypes.cdll.LoadLibrary(library_path)
+libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
         
 ft_putstr_fd = libft.ft_putstr_fd
 

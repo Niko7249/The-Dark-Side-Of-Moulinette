@@ -1,6 +1,7 @@
 import ctypes
 import os
 import sys
+import pytest
 sys.path.append('./../.')
 import Moulinette
 
