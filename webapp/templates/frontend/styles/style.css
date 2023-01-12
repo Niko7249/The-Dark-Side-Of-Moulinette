@@ -225,18 +225,16 @@ body {
 
 .destroyer {
 	position: absolute;
-	height: 100px;
+	height: 70px;
 	top: 156px;
-	left: -50%;
-	transform: scale(0.7);
+	left: -50vw;
 	z-index: -1;
-	/* left: -360px; */
-	animation: moving 100s linear infinite;
+	animation: moving 200s linear infinite;
 }
 
 @keyframes moving {
 	0% {
-		left: -30vw;
+		left: -50vw;
 	}
 	100% {
 		left: 100vw
@@ -279,4 +277,8 @@ body::-webkit-scrollbar {
 /* DEATH STAR */
 .death-star {
 	width: 50px;
+}
+
+.sld-trm-container {
+	position: relative;
 }
