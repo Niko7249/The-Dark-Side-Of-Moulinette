@@ -1,17 +1,12 @@
 import ctypes
-import pytest
 import os
+import sys
+import pytest
+sys.path.append('./../.')
+import Moulinette
 
-# Get the current working directory
-cwd = os.getcwd()
-
-# Construct the full path to the library file
-library_path = os.path.join(cwd, 'libft.so')
-library2_path = os.path.join(cwd, 'libft_tester.so')
-
-
-libft = ctypes.cdll.LoadLibrary(library_path)
-libft_tester = ctypes.cdll.LoadLibrary(library2_path)
+libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
+libft_tester = Moulinette.LIBFT_TESTER
 
 test_dests = ["CiaoCmondo    ", "", "kjcdbicjbds", "kjcdbicjbds", "kjcdbicjbdsf ihfbi biwu fw98y98n98", "kjcdbicjbds"]
 test_ints = [3, 3, 0, 25, 6, 4]

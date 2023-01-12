@@ -1,18 +1,11 @@
 import ctypes
-
-# Load the shared library containing your ft_split function
-lib = ctypes.cdll.LoadLibrary('./libft.so')
-
-# Define the prototype of the ft_split function
-ft_split = lib.ft_split
-ft_split.argtypes = [ctypes.c_char_p, ctypes.c_char]
-ft_split.restype = ctypes.POINTER(ctypes.POINTER(ctypes.c_char))
-
-import ctypes
+import os
+import sys
 import pytest
+sys.path.append('./../.')
+import Moulinette
 
-# Load the shared library containing your ft_split function
-lib = ctypes.cdll.LoadLibrary('./libft.so')
+libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
 
 # Define the prototype of the ft_split function
 ft_split = lib.ft_split

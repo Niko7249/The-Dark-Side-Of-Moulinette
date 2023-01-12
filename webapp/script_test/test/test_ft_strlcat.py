@@ -1,17 +1,12 @@
 import ctypes
-import pytest
 import os
+import sys
+import pytest
+sys.path.append('./../.')
+import Moulinette
 
-# Get the current working directory
-cwd = os.getcwd()
-
-# Construct the full path to the library file
-library_path = os.path.join(cwd, 'libft.so')
-
-libft = ctypes.cdll.LoadLibrary(library_path)
-
-libbsd_path = '/lib/x86_64-linux-gnu/libbsd.so.0'
-libbsd = ctypes.cdll.LoadLibrary(libbsd_path)
+libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
+libbsd = Moulinette.LIBBSD
 
 test_dests = [ctypes.create_string_buffer(b'1234567890\0' * 2), ctypes.create_string_buffer(b'123456tretertert57890\0' * 2), ctypes.create_string_buffer(b'123456tretertert57890\0' * 2), ctypes.create_string_buffer(b'\0' * 2)]
 test_strings2 = [b"abcdef", b"abcdef6546346", b"abcdef6546346", b""]
