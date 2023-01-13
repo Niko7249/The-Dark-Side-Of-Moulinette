@@ -3,9 +3,11 @@
 let div = document.getElementById("prova");
 
 function getJson(json) { //prima era path
-    let new_json = json.replace(/&#39;/g,'"').replace(/&#34;/g,'"')
-    console.log(new_json);
-    printTerminal(new_json);
+	console.log("222",json)
+    // let new_json = JSON.stringify(json)
+    // console.log("AAAA",new_json);
+	// new_json = new_json.replace(/&#39;/g,'"').replace(/&#34;/g,'"');
+    printTerminal(json);
 	// console.log(window.location.origin + path)
 	// fetch(window.location.origin + path)
 	// 	.then((response) => response.json())
