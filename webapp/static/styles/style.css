@@ -2,11 +2,18 @@
 	font-family: starWars;
 	src: url(../assets/fonts/SfDistantGalaxyOutlineItalic-4yA4.ttf);
 }
+@font-face {
+	font-family: droid;
+	src: url(../assets/fonts/DroidobeshDepot-gxmVE.otf);
+}
 
 :root {
 	--green: #26b621;
-	--white: rgb(255, 247, 0);
-	--red: rgb(231, 0, 0);
+	--white: #fff700;
+	--red: #e70000;
+	--red2: #ad0000;
+	--blue: #3e41db;
+	--black: black;
 }
 
 body {
@@ -14,11 +21,14 @@ body {
 	font-family: monospace;
 	font-size: 15px;
 	background-color: #222;
+	padding: 10px;
 }
 
 .page-content {
 	position: relative;
 	z-index: 2;
+	margin: 0 auto;
+	width: 80%;
 }
 
 .title {
@@ -73,11 +83,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	color: rgb(173, 0, 0);
+	color: var(--red2);
 	font-family: 'starWars';
 	font-size: 90px;
 	font-weight: 500;
-	filter: drop-shadow(0 0 5px rgb(173, 0, 0)) drop-shadow(0 0 20px rgb(173, 0, 0)) contrast(2) brightness(2);
+	filter: drop-shadow(0 0 5px var(--red2)) drop-shadow(0 0 20px var(--red2)) contrast(2) brightness(2);
 }
 
 .comingsoon-span {
@@ -93,6 +103,21 @@ body {
 
 .fast-flickering {
 	animation: flicker 2s linear infinite;
+}
+
+.background {
+	position: fixed;
+	width: 200vw;
+	height: 400vw;
+	top: -50%;
+	left: -50%;
+	z-index: 1;
+	will-change: transform;
+	animation: spin 150s linear infinite;
+	background-size: 20%;
+	background-position: center center;
+	background-repeat: repeat;
+	background-attachment: scroll;
 }
 
 @keyframes flicker {
@@ -117,21 +142,6 @@ body {
 	69.999% {
 		opacity: 0.4;
 	}
-}
-
-.background {
-	position: fixed;
-	width: 200vw;
-	height: 400vw;
-	top: -50%;
-	left: -50%;
-	z-index: 1;
-	will-change: transform;
-	animation: spin 150s linear infinite;
-	background-size: 20%;
-	background-position: center center;
-	background-repeat: repeat;
-	background-attachment: scroll;
 }
 
 @-moz-keyframes spin {
@@ -181,33 +191,94 @@ body {
 }
 
 .terminal {
-	margin: 0 auto;
-	width: 80%;
-	background-color: black;
+	background-color: var(--black);
 	padding: 10px;
+	max-height: 500px;
+	overflow-y: auto;
 	/* border: 2px solid rgb(51, 6, 232); */
 	/* box-shadow: 0 0 40px 8px rgba(255, 247, 2, 0.625); */
-	border: 2px solid #3e41db;
-	border-radius: 15px;
-	filter: drop-shadow(0 0 5px #3e41db) drop-shadow(0 0 20px #3e41db) contrast(2) brightness(2);
+	border: 2px solid var(--blue);
+	border-radius: 7px;
+	filter: drop-shadow(0 0 5px var(--blue)) drop-shadow(0 0 20px var(--blue)) contrast(2) brightness(2);
+}
+.soldier-container {
+	margin: 0 2px;
+    bottom: 1px;
+    height: 80px;
+    position: absolute;
+    width: calc(100% - 4px);
+    overflow-x: hidden;
+}
+.text-description {
+	text-align: center;
+	font-family: 'droid';
+	font-size: 25px;
+}
+.text-description .span1 {
+	font-family: monospace;
+	font-size: 31px;
+	margin-right: -5px;
+}
+.text-description .span2 {
+	margin-left: -5px;
 }
 
 .destroyer {
 	position: absolute;
-	height: 100px;
+	height: 70px;
 	top: 156px;
-	left: 100px;
-	transform: scale(2);
-	/* left: -360px; */
-	animation: moving 60s linear infinite;
+	left: -50vw;
+	z-index: -1;
+	animation: moving 200s linear infinite;
 }
 
 @keyframes moving {
 	0% {
-		left: -560px
+		left: -50vw;
 	}
-
 	100% {
-		left: 101%
+		left: 100vw
 	}
+}
+
+.d-none {
+	display: none;
+}
+
+/* SCROLLBAR */
+body::-webkit-scrollbar {
+	width: 0px;
+}
+
+.terminal::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--black);
+	border-radius: 15px;
+	margin: 1px 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--white);
+	width: 5px;
+	border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+
+/* DEATH STAR */
+.death-star {
+	width: 50px;
+}
+
+.sld-trm-container {
+	position: relative;
 }

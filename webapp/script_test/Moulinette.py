@@ -13,18 +13,22 @@ LIBFT = None
 LIBFT_TESTER = None
 LIBC = None
 LIBBSD = None
+TEST_FILEPATH = None
 
 
 def run_tests(new_filepath):
-  global LIBRARY_PATH, LIBFT,  LIBFT_TESTER, LIBC, LIBBSD
+  global LIBRARY_PATH, LIBFT,  LIBFT_TESTER, LIBC, LIBBSD, TEST_FILEPATH
 
   LIBRARY_PATH = os.path.join(str(new_filepath) + '/libft.so')
   LIBFT = ctypes.cdll.LoadLibrary(LIBRARY_PATH)
   LIBFT_TESTER = ctypes.cdll.LoadLibrary('./script_test/lib/libft_tester.so')
   LIBC = ctypes.cdll.LoadLibrary('libc.so.6')
   LIBBSD = ctypes.cdll.LoadLibrary('libbsd.so.0')
-#  LIBBSD = ctypes.cdll.LoadLibrary('./script_test/lib/libbsd.so.0.11.5')
-#  LIBBSD = ctypes.cdll.LoadLibrary('/../usr/lib/libbsd.so.0')
+  #LIBBSD = ctypes.cdll.LoadLibrary('/../usr/lib/libbsd.so.0')
+
+  #CREAZIONE DIR TXT PER LA GENERAZIONE DEI FILE DI TESTO
+  TEST_FILEPATH = os.path.join(new_filepath + '/txt')
+  os.mkdir(TEST_FILEPATH)
 
   path = './script_test/test/'
   tests = [

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for
 import zipfile
 import hashlib
 import datetime
@@ -56,8 +56,8 @@ def home():
             data = {"ERROR": "MV got fu***d"}
             return render_template('index.html', data=data)
 
-        make = subprocess.run('make -f ../../script_test/Makefile re', shell=True, cwd=new_filepath)
-        if make.returncode == 0:
+        make_re = subprocess.run('make -f ../../script_test/Makefile re', shell=True, cwd=new_filepath)
+        if make_re.returncode == 0:
             data = {"OK": "its all good bruh"}
             data = {"filename": new_filepath}
         else:
@@ -71,9 +71,11 @@ def home():
         else:
             data = {"ERROR": "gcc got fu***d"}
             return render_template('index.html', data=data)
+        
+        make_fclean = subprocess.run('make -f ../../script_test/Makefile fclean', shell=True, cwd=new_filepath)
         #----------------------
         #check for errors in shell operations
-        if mv.returncode == 0 and make.returncode == 0 and gcc.returncode == 0:
+        if mv.returncode == 0 and make_re.returncode == 0 and gcc.returncode == 0:
             data = {"OK": "its all good bruh"}
             data = {"filename": new_filepath}
         else:
@@ -97,13 +99,20 @@ def home():
             with open(os.path.join(json_path, filename)) as f:
                 data = json.load(f)
                 ALL_FILES.append(data)
-
+            result = (ALL_FILES)    
+            return render_template('index.html', result=result)
+                
+                
+    #     data={"RESULT": json_path}
+    #     return render_template('index.html', data=data)
+    # data={"RESULT": json_path}
+    # return render_template('index.html', data=data)
     #nome variabile json_out
     # parsare tutti i file json e inviare sul frontend
     
    # json output
 
-    return render_template('index.html', data=data)
+
 
 @app.route('/api/result')
 def get_result():

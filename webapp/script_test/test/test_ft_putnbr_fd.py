@@ -9,6 +9,8 @@ libft = ctypes.cdll.LoadLibrary(Moulinette.LIBRARY_PATH)
         
 ft_putnbr_fd = libft.ft_putnbr_fd
 
+test_path = os.path.join(Moulinette.TEST_FILEPATH + "/test3001.txt")
+
 test_ints = [123456789, -127849, 0, -2147483648, -21474836]
 
 ids = ["int: {}".format(t) for t in test_ints]
@@ -16,7 +18,7 @@ ids = ["int: {}".format(t) for t in test_ints]
 
 def test_ft_putnbr_fd(test_int):
     # Apri un file di test in scrittura
-    with open('test3001.txt', 'wb') as f:
+    with open(test_path, 'wb') as f:
         # Verifica che il file descriptor sia valido
         assert f.fileno() > 0
 
@@ -26,6 +28,10 @@ def test_ft_putnbr_fd(test_int):
         result = ft_putnbr_fd(nb, f.fileno())
 
     # Apri il file di test in lettura
-    with open('test3001.txt', 'rb') as f:
+    with open(test_path, 'rb') as f:
             # Verifica che il file contenga solo il carattere scritto
             assert f.read() == str(nb).encode('utf-8')
+    if os.path.exists(test_path):
+        os.remove(test_path)
+    else:
+        print("the file from the test_ft_putnbr_fd.py was NOT CREATED")
