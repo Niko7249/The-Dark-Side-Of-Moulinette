@@ -1,105 +1,128 @@
-<!DOCKTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	  rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-    <link type="image/png" sizes="16x16" rel="icon" href="/images/icons8-eye-16.png">
-    <link type="image/png" sizes="32x32" rel="icon" href="/images/icons8-eye-32.png">
-    <link type="image/png" sizes="96x96" rel="icon" href="/images/icons8-eye-96.png">
-    <title>TDSOM</title>
-    <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>The Dark's One</title>
+	<link rel="stylesheet" href="./static/styles/style.css">
+	<link rel="stylesheet" href="./static/styles/soldier.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./styles/style.css') }}">
+</head>
+<body>
+<!--
+	<span>FT_PUTSTR_FD</span>
 
-      @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+	<div class="title">
+		<div class="hr-container">
+			<hr/>
+			<hr/>
+		</div>
+		<span>test&nbsp;session&nbsp;started</span>
+		<div class="hr-container">
+			<hr/>
+			<hr/>
+		</div>
+	</div>
 
-      body {
-	  padding-top: 30px;
-	  padding-bottom: 30px;
-	  border-style: solid;
-	  border-color: black;
+	<span>collected 5 item</span>
 
-      }
-      #container {
-	  margin: auto;
-	  width: 80%;
-	  height: 100%;
-	  padding: 40px;
-	  background-color: grey;
-      }
-      h1 {
-	  color: black;
-	  text-align: center;
-	  text-shadow: 2px 2px 5px red;
-	  font-size: 70px;
-	  font-family: 'Metal Mania', cursive;
-      }
-      p {
-	  color: black;
-	  text-align: center;
-	  text-shadow: 2px 2px 5px red;
-	  font-size: 40px;
-	  font-family: 'Metal Mania', cursive;
-      }
-      button {
-	  float: right;
-	  margin-top: 10px;
-      }
-      .form-group {
-	  background-color: grey;
-	  color: black;
-	  margin-top: 500px;
-	  margin-right: 50px;
-	  width: 500px;
+	<div class="test">
 
-      }
-      /* #form_output { */
-      /* 	  background-color: black; */
-      /* 	  margin: auto; */
-      /* } */
-    </style>
-  </head>
-  <body>
-    <div id="container">
-      <h1>The Dark Side of Moulinette</h1>
-      {% if data and data["OK"] %}
-      <p>OK: {{ data["OK"] }}!</p>
-      {% endif %}
-      {% if data and data["ERROR"] %}
-      <p>OK: {{ data["ERROR"] }}!</p>
-      {% endif %}
-      <div id="form-output">
-	{% if data and data["name"] %}
-	<h1>OK: {{ data["name"] }}!</h1>
-	{% endif %}
+		<div>
+			<span>test/test_ft_putnbr_fd.py::test1_ft_putnbr_fd <span style="margin-left: 5px;" class="green">PASSED</span></span>
+			<span class="green">[&nbsp;20%]</span>
+		</div>
+		<div>
+			<span>test/test_ft_putnbr_fd.py::test1_ft_putnbr_fd <span style="margin-left: 5px;" class="green">PASSED</span></span>
+			<span class="green">[&nbsp;40%]</span>
+		</div>
+		<div>
+			<span>test/test_ft_putnbr_fd.py::test1_ft_putnbr_fd <span style="margin-left: 5px;" class="green">PASSED</span></span>
+			<span class="green">[&nbsp;60%]</span>
+		</div>
+		<div>
+			<span>test/test_ft_putnbr_fd.py::test1_ft_putnbr_fd <span style="margin-left: 5px;" class="green">PASSED</span></span>
+			<span class="green">[&nbsp;80%]</span>
+		</div>
+		<div>
+			<span>test/test_ft_putnbr_fd.py::test1_ft_putnbr_fd <span style="margin-left: 5px;" class="green">PASSED</span></span>
+			<span class="green">[100%]</span>
+		</div>
+	</div>
 
-	{% if data and data["error"] %}
-	<h1>ERROR: {{ data["error"] }}!</h1>
-	{% endif %}
+	<div class="title green">
+		<div class="hr-container">
+			<hr/>
+			<hr/>
+		</div>
+		<span>5&nbsp;passed&nbsp;in&nbsp;0.01s</span>
+		<div class="hr-container">
+			<hr/>
+			<hr/>
+		</div>
+	</div>
+	-->
 
-      </div>
-      <div id="form-input">
-	<form action="#" method="post" enctype="multipart/form-data">
-	  <div class="form-group">
-	    <label for="file-upload">Upload your zippy</label>
-	    <input type="file"
-		   class="form-control"
-		   id="file-upload"
-		   placeholder="upload"
-		   name="file"
-		   accept=".zip">
-	    <button type="submit" class="btn btn-dark">Submit</button>
-	  </div>
-	</form>
-      </div>
-    </div>
-  </body>
+	<!-- PROVA -->
+	<section>
+		<div class="background stars"></div>
+		<div class="page-content">
+			<img src="./static/assets/destroyer.png"  class="destroyer "></img>
+			<div class="page-title">
+				<span>the <span class="fast-flickering">dark</span> side</span>
+				<span>of <span class="slow-flickering">moulinette</span></span>
+			</div>
+			<div style="margin: 30px 0;">
+				<div class="text-description">
+					<div>
+						<span class="span1"></span>
+						<span class="span2">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+					</div>
+					<div>
+						<span class="span1"></span>
+						<span class="span2">Explicabo, a, nam, nesciunt rem quas veritatis provident</span>
+					</div>
+					<div>
+						<span class="span1"></span>
+						<span class="span2">tenetur saepe tempore numquam commodi neque!</span>
+					</div>
+					<div>
+						<span class="span1"></span>
+						<span class="span2">Quaerat ullam praesentium commodi alias repudiandae vero magnam!</span>
+					</div>
+				</div>
+				<form action="#" method="post" enctype="multipart/form-data">
+					<input type="file"
+					       class="form-control"
+					       id="file-upload"
+					       placeholder="upload"
+					       name="file"
+					       accept=".zip" required/>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+			<!-- <img src="./assets/deathStar.png" class="death-star"> -->
+			<div class="sld-trm-container d-none">
+				<div class="terminal" id="prova"></div>
+				<div class="soldier-container">
+					<div class="soldier"></div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
 </html>
+<!-- <script src="./js/message.js"></script> -->
+<script src="./static/js/index.js"></script>
+<script src="./static/js/typeWriter.js"></script>
 <script>
-  {% if data and data["RESULT"] %}
-  getJson(data["RESULT"])
+  let prova = '{{ [result] }}'
+  {% if data and data["result"] %}
+  getJson(prova)
   {% endif %}
-</script>
+  console.log(prova)
 
+</script>

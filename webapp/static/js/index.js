@@ -2,14 +2,17 @@
 // localStorage.setItem("testsJson", JSON.stringify(obj));
 let div = document.getElementById("prova");
 
-function getJson(path) {
-	console.log(window.location.origin + path)
-	fetch(window.location.origin + path)
-		.then((response) => response.json())
-		.then((json) => {
-			console.log(json);
-			printTerminal(json);
-		});
+function getJson(json) { //prima era path
+    let new_json = json.replace(/&#39;/g,'"').replace(/&#34;/g,'"')
+    console.log(new_json);
+    printTerminal(new_json);
+	// console.log(window.location.origin + path)
+	// fetch(window.location.origin + path)
+	// 	.then((response) => response.json())
+	// 	.then((json) => {
+	// 		console.log(json);
+	// 		printTerminal(json);
+	// 	});
 }
 
 // let testsJson = JSON.parse(localStorage.getItem("testsJson"));
