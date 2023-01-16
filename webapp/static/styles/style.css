@@ -71,7 +71,7 @@ body {
 }
 
 .test {
-	margin: 20px 0;
+	margin: 15px 0;
 }
 
 .test div {
@@ -281,4 +281,8 @@ body::-webkit-scrollbar {
 
 .sld-trm-container {
 	position: relative;
+}
+
+.title.summary {
+	margin-bottom: 15px;
 }
