@@ -1,23 +1,12 @@
-// console.log(obj);
-// localStorage.setItem("testsJson", JSON.stringify(obj));
-let div = document.getElementById("prova");
+let	div = document.getElementById("prova");
+let	url_path = window.location.pathname
 
 function getJson(json) { //prima era path
 	console.log("222",json)
-    // let new_json = JSON.stringify(json)
-    // console.log("AAAA",new_json);
-	// new_json = new_json.replace(/&#39;/g,'"').replace(/&#34;/g,'"');
-    printTerminal(json);
-	// console.log(window.location.origin + path)
-	// fetch(window.location.origin + path)
-	// 	.then((response) => response.json())
-	// 	.then((json) => {
-	// 		console.log(json);
-	// 		printTerminal(json);
-	// 	});
+	if (url_path === "/tested")
+    	printTerminal(json);
 }
 
-// let testsJson = JSON.parse(localStorage.getItem("testsJson"));
 function printTerminal(testsJson) {
 	testsJson.map((fn) => {
 		let isPercFail = false;
@@ -54,7 +43,7 @@ function printTerminal(testsJson) {
 									""
 								)}<span style="margin-left: 10px;" class="${color}">${test.outcome.toUpperCase()}</span></span>
 							<span class="${isPercFail ? "red" : "green"}">[${
-							perc === 100 ? perc : "&nbsp;" + perc
+							perc === 100 ? perc : "&nbsp;" + Math.round(perc)
 						}%]</span>
 						</div>
 					`;
@@ -105,7 +94,7 @@ function printTerminal(testsJson) {
 					: ""
 			}
 
-			<div class="title ${fn.summary.failed ? "red" : "green"}">
+			<div class="title summary ${fn.summary.failed ? "red" : "green"}">
 				<div class="hr-container">
 					<hr/>
 					<hr/>
