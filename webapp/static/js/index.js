@@ -1,5 +1,8 @@
-let	div = document.getElementById("prova");
+let	div = document.getElementById("terminal_ok");
 let	url_path = window.location.pathname
+
+if (url_path === "/" || url_path === "")
+	document.querySelector('.home-content-container').classList.remove('d-none');
 
 function getJson(json) { //prima era path
 	console.log("222",json)
