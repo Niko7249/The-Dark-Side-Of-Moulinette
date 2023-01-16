@@ -70,7 +70,7 @@ class Err_popup extends HTMLElement {
             </style>
             <div class="pop-container">
                 <div class="pop-header">
-                    <span>Error</span>
+                    <span>${this.getAttribute('title')}</span>
                     <button class="esc-btn" onclick="closePopup()">&#9747;</button>
                 </div>
                 <div class="pop-content">
