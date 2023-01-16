@@ -1,4 +1,5 @@
-let	div = document.getElementById("terminal_ok");
+let	div_ok = document.getElementById("terminal_ok");
+let	div_ko = document.getElementById("terminal_ko");
 let	url_path = window.location.pathname
 
 if (url_path === "/" || url_path === "")
@@ -10,10 +11,15 @@ function getJson(json) { //prima era path
     	printTerminal(json);
 }
 
+function closePopup() {
+	let popCont = document.querySelector(".pop-container");
+	popCont.classList.add('d-none')
+}
+
 function printTerminal(testsJson) {
 	testsJson.map((fn) => {
 		let isPercFail = false;
-		div.innerHTML += `
+		div_ok.innerHTML += `
 			<span>${fn.collectors[0].result[0].nodeid
 				.replace("script_test/test/test_", "")
 				.replace(".py", "")

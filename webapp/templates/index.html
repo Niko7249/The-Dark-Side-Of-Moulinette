@@ -16,6 +16,7 @@
 	<title>Dark Moulinette</title>
 	<link rel="stylesheet" href="./static/styles/style.css">
 	<link rel="stylesheet" href="./static/styles/soldier.css">
+	<script src="./static/components/Err_popup.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./styles/style.css') }}"> -->
 </head>
 <body>
@@ -57,9 +58,11 @@
 					<button type="submit">Submit</button>
 				</form>
 			</div>
+			<err-popup description=""></err-popup>
 			<!-- <img src="./assets/deathStar.png" class="death-star"> -->
 			<div class="sld-trm-container d-none">
 				<div class="terminal" id="terminal_ok"></div>
+				<div class="terminal" id="terminal_ko"></div>
 				<div class="soldier-container">
 					<div class="soldier"></div>
 				</div>
