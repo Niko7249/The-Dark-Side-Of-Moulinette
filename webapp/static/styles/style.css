@@ -24,7 +24,7 @@ body {
 }
 
 section {
-	height: calc(100vh - 20px);
+	height: calc(100vh - 40px);
 	position: relative;
 	padding: 10px;
 }
@@ -304,3 +304,68 @@ body::-webkit-scrollbar {
 	display: flex;
 	justify-content: center;
 }
+
+.character-container div:nth-child(1) img {
+	top: calc(45vh - 80px);
+	right: -31px;
+}
+.character-container div:nth-child(2) img {
+	top: 45vh;
+}
+.character-container div:nth-child(3) img {
+	top: calc(45vh + 80px);
+	right: -33px;
+}
+.character {
+	position: absolute;
+	z-index: 1;
+	right: -28px;
+	height: 80px;
+	width: max-content;
+	transform: rotate(-50deg);
+}
+.character:hover {
+	transform: scale(1.2) rotate(-50deg);
+}
+
+/* ----------------------------------------TOOLTIP------------------------------------- */
+.tooltiptext {
+	background-color: white;
+	color: black;
+	font-size: 11px;
+	right: 1px;
+	position: absolute;
+	border-radius: 20px;
+	padding: 1px 5px;
+	opacity: 0;
+	transition: opacity 0.5s;
+	z-index: 2;
+}
+.character-container div:nth-child(1) span {
+	top: calc(45vh - 90px);
+}
+.character-container div:nth-child(2) span {
+	top: calc(45vh - 10px);
+}
+.character-container div:nth-child(3) span {
+	top: calc(45vh + 70px);
+}
+.tooltiptext:before{
+    content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	border-left: 8px solid transparent;
+	border-top: 8px solid white;
+	border-right: 8px solid transparent;
+	left: 92px;
+	top: 15px;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+.tooltiptext.active,
+.tooltiptext.active:before {
+	opacity: 100;
+}
+/* ---------------------------------------- END TOOLTIP------------------------------------- */

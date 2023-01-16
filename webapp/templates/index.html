@@ -59,11 +59,6 @@
 				</form>
 			</div>
 			<err-popup description="" title=""></err-popup>
-			<div class="character-container">
-				<img class="character" src="./static/assets/image/character/char_marco.png" alt="">
-				<img class="character" src="./static/assets/image/character/char_valerio.png" alt="">
-				<img class="character" src="./static/assets/image/character/char_nico.png" alt="">
-			</div>
 			<!-- <img src="./assets/deathStar.png" class="death-star"> -->
 			<div class="sld-trm-container d-none">
 				<div class="terminal" id="terminal_ok"></div>
@@ -75,7 +70,20 @@
 				<span>ALFA 0.0.1</span>
 			</div>
 		</div>
-
+		<div class="character-container">
+			<div>
+				<a href="https://github.com/marco0167" target="_blank"><img class="character" onmouseover="activateTool(0)" onmouseleave="disableTool(0)" src="./static/assets/image/character/char_marco.png" alt=""></a>
+				<span class="tooltiptext">Hi, i'm mcoppola</span>
+			</div>
+			<div>
+				<a href="https://github.com/vale-px" target="_blank"><img class="character" onmouseover="activateTool(1)" onmouseleave="disableTool(1)" src="./static/assets/image/character/char_valerio.png" alt=""></a>
+				<span class="tooltiptext">Hi, i'm vpescete</span>
+			</div>
+			<div>
+				<a href="https://niko.rip/" target="_blank"><img class="character"  onmouseover="activateTool(2)" onmouseleave="disableTool(2)" src="./static/assets/image/character/char_nico.png" alt=""></a>
+				<span class="tooltiptext">Hi, i'm ntamiano</span>
+			</div>
+		</div>
 	</section>
 
 </body>
@@ -85,5 +93,13 @@
 <script src="./static/js/typeWriter.js"></script>
 <script>
     getJson({{ result|safe }})
+	function activateTool(n) {
+		let span = document.querySelectorAll('.tooltiptext');
+		span[n].classList.add('active')
+	}
+	function disableTool(n) {
+		let span = document.querySelectorAll('.tooltiptext');
+		span[n].classList.remove('active')
+	}
 
 </script>
