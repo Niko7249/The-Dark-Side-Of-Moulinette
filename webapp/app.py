@@ -9,19 +9,19 @@ import sys
 import json
 
 ALL_FILES = []
-
 app = Flask(__name__, template_folder = './templates')
 app.config['UPLOAD_FOLDER'] = "./uploads"
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024 #5MB size_limit files
 
-@app.route("/", methods =["GET","POST"])
-def home():
+@app.route("/tested", methods =["GET","POST"])
+def tested():
+    global RESULT
     if request.method == 'GET':
         return render_template('index.html')
     elif request.method == 'POST':
         f = request.files["file"]
         filename = f.filename
-        
+
         # check_filename if contains .zip
         if filename[-4:].lower() != ".zip":
             data = {"error": "Only .zip files are accecpted!"}
@@ -38,7 +38,7 @@ def home():
         f.save(new_filepath + ".zip")
         #-----------------
 
-        os.makedirs(new_filepath, exist_ok=True)        
+        os.makedirs(new_filepath, exist_ok=True)
         try:
             with zipfile.ZipFile(new_filepath + ".zip", 'r') as zip_ref:
                 zip_ref.extractall(new_filepath)
@@ -71,7 +71,7 @@ def home():
         else:
             data = {"ERROR": "gcc got fu***d"}
             return render_template('index.html', data=data)
-        
+
         make_fclean = subprocess.run('make -f ../../script_test/Makefile fclean', shell=True, cwd=new_filepath)
         #----------------------
         #check for errors in shell operations
@@ -99,26 +99,23 @@ def home():
             with open(os.path.join(json_path, filename)) as f:
                 data = json.load(f)
                 ALL_FILES.append(data)
-            result = (ALL_FILES)    
-            return render_template('index.html', result=result)
-                
-                
+    result = (ALL_FILES)
+    return render_template('index.html', result=result)
+
+
     #     data={"RESULT": json_path}
     #     return render_template('index.html', data=data)
     # data={"RESULT": json_path}
     # return render_template('index.html', data=data)
     #nome variabile json_out
     # parsare tutti i file json e inviare sul frontend
-    
+
    # json output
 
 
-
-@app.route('/api/result')
-def get_result():
-    # if (!ALL_FILES):
-    #     return ("NOT YET BRUH")
-    return jsonify(ALL_FILES)
+@app.route("/", methods =["GET", "POST"])
+def home():
+    return render_template("index.html")
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
