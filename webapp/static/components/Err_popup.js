@@ -75,13 +75,12 @@ class Err_popup extends HTMLElement {
                 </div>
                 <div class="pop-content">
                     <div class="pop-mess">
-                        <img src="./static/assets/Removal-784.png" alt="Removal-784">
+                        <img src="./static/assets/image/Removal-784.png" alt="Removal-784">
                         <span>${this.getAttribute('description')}</span>
                     </div>
                     <button class="ok-btn" onclick="closePopup()"><div>OK</div></button>
                 </div>
             </div>
-
         `;
     }
 }
